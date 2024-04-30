@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Pookie Bear!</title>
+    <style>
+        /* Styling for the page */
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: #ffc0cb; /* Light pink background color */
+            overflow: hidden; /* Prevents scrollbars */
+            position: relative; /* Needed for absolute positioning */
+        }
+
+        /* Center the message and add animation */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .birthday-text {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            color: white; /* White text color */
+            z-index: 1; /* Ensure the text appears above the cake images */
+            position: relative; /* Needed to position above the cakes */
+            margin-bottom: 20px; /* Add some space below the text */
+            animation: bounce 1s infinite; /* Animation for continuous bouncing effect */
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Styling for cake images */
+        .cake {
+            position: absolute;
+            animation: fall 10s linear infinite; /* Animation for falling effect */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="birthday-text">
+            Happy Birthday Pookie Bear!<br>
+            <img src="enderman.jpg" alt="Birthday Cake" width="200" height="250">
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to generate a random number between min and max
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Function to create a cake element and set its position
+        function createCake() {
+            var cake = document.createElement("img");
+            cake.src = "tiny_cake.png";
+            cake.alt = "Tiny Cake";
+            cake.width = 60;
+            cake.height = 60;
+            cake.classList.add("cake");
+            cake.style.left = getRandomNumber(0, window.innerWidth - 60) + "px";
+            document.body.appendChild(cake);
+        }
+
+        // Create cakes at random intervals
+        setInterval(createCake, 250); // Decreased interval to create more cakes
+    </script>
+</body>
+</html>
